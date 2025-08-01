@@ -31,7 +31,7 @@ npm run dev
 
 - [x] Создан шаблон Next.js + Tailwind
 - [x] Подключён к GitHub
-- [ ] Добавить i18n
-- [ ] Добавить Header и Footer
+- [x] Добавить i18n
+- [x] Добавить Header и Footer
 - [ ] Подключить Sanity
 - [ ] Настроить деплой на Vercel
