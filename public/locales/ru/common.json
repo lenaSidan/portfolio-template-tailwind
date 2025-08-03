@@ -1,5 +1,7 @@
 {
+  "siteTitle": "Название страницы",
   "home": "Главная",
-  "about": "О сайте",
+  "about": "О нас",
+  "articles": "Статьи",
   "allRightsReserved": "Все права защищены"
 }

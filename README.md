@@ -33,5 +33,5 @@ npm run dev
 - [x] Подключён к GitHub
 - [x] Добавить i18n
 - [x] Добавить Header и Footer
-- [ ] Подключить Sanity
+- [x] Подключить Sanity
 - [ ] Настроить деплой на Vercel

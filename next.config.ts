@@ -1,17 +1,15 @@
-// next.config.js
+const { i18n } = require('./next-i18next.config');
+
 const nextConfig = {
-  i18n: {
-    locales: ['de', 'ru'], // или какие у тебя есть
-    defaultLocale: 'de',
-  },
+  i18n,
   async rewrites() {
     return [
       {
         source: '/studio/:path*',
         destination: '/studio/:path*',
       },
-    ]
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
