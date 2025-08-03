@@ -24,6 +24,11 @@ const Header = () => {
           </Link>
         </li>
         <li>
+          <Link href="/event" locale={router.locale}>
+            {t("events")}
+          </Link>
+        </li>
+        <li>
           <Link href="/about">{t("about")}</Link>
         </li>
       </ul>

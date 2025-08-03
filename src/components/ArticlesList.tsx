@@ -32,7 +32,6 @@ export default function ArticleList() {
       <h2>{locale === "ru" ? "Статьи" : "Artikel"}</h2>
       {articles.map((article) => {
         const slug = article.slug?.current;
-        console.log("Article slug:", article.slug?.current);
         return (
           <div key={article._id} style={{ marginBottom: "2rem" }}>
             {article.image && (
