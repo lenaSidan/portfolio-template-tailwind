@@ -1,6 +1,7 @@
 {
   "siteTitle": "Website Title",
-  "home": "Startseite",
-  "about": "Über die Seite",
+   "home": "Startseite",
+  "about": "Über uns",
+  "articles": "Artikel",
   "allRightsReserved": "All rights reserved"
 }

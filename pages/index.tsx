@@ -1,3 +1,4 @@
+import ArticleList from "@/src/components/ArticlesList";
 import Header from "@/src/components/Header";
 import Intro from "@/src/components/Intro";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -22,6 +23,7 @@ export default function Home({ intro }: { intro: IntroData }) {
       <main>
         <h1>Welcome to the site!</h1>
         <Intro intro={intro} />
+        <ArticleList />
       </main>
       {/* <Footer /> */}
     </>
@@ -36,7 +38,8 @@ export async function getServerSideProps({ locale }: { locale: string }) {
     useCdn: true,
   });
 
-  const intro = await client.fetch(`*[_type == "intro"][0]`);
+  const rawIntro = await client.fetch(`*[_type == "intro"][0]`);
+  const intro = JSON.parse(JSON.stringify(rawIntro)); // <-- ✅ фикс
 
   return {
     props: {

@@ -1,10 +1,10 @@
-'use client'
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+"use client";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
-  const { t, i18n } = useTranslation('common');
+  const { t, i18n } = useTranslation("common");
   const router = useRouter();
 
   const changeLanguage = (lang: string) => {
@@ -15,12 +15,21 @@ const Header = () => {
   return (
     <nav>
       <ul>
-        <li>{t('home')}</li>
-        <li>{t('about')}</li>
+        <li>
+          <Link href="/">{t("home")}</Link>
+        </li>
+        <li>
+          <Link href="/article" locale={router.locale}>
+            {t("articles")}
+          </Link>
+        </li>
+        <li>
+          <Link href="/about">{t("about")}</Link>
+        </li>
       </ul>
-      <div style={{ marginTop: '1rem' }}>
-        <button onClick={() => changeLanguage('ru')}>🇷🇺 RU</button>
-        <button onClick={() => changeLanguage('de')}>🇩🇪 DE</button>
+      <div style={{ marginTop: "1rem" }}>
+        <button onClick={() => changeLanguage("ru")}>🇷🇺 RU</button>
+        <button onClick={() => changeLanguage("de")}>🇩🇪 DE</button>
       </div>
     </nav>
   );
