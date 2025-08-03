@@ -6,6 +6,12 @@ export const eventType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "featuredOnHome",
+       title: "Показать на главной / Auf der Startseite zeigen",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "object",

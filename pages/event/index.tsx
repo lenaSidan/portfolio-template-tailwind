@@ -16,6 +16,7 @@ export default function AllEventsPage() {
       <Header />
       <main style={{ padding: "2rem" }}>
         <EventsList />
+        <a href="/">{locale === "ru" ? "← Назад на главную" : "← Zurück zur Startseite"}</a>
       </main>
     </>
   );

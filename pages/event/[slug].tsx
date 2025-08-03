@@ -38,7 +38,7 @@ export default function EventPage({ event }: Props) {
       <p>{event.location[lang]}</p>
 
       <PortableText value={event.content[lang]} />
-      <a href="/">{lang === "ru" ? "← Назад" : "← Zurück"}</a>
+      <a href="/event">{lang === "ru" ? "← Назад" : "← Zurück"}</a>
     </main>
   );
 }

@@ -24,7 +24,7 @@ export default function ArticlePage({ article }: { article: Article }) {
         <img src={urlFor(article.image).url()} alt={article.image.alt || ""} style={{ maxWidth: "100%" }} />
       )}
       <PortableText value={article.content[lang]} />
-      <a href="/">{lang === "ru" ? "← Назад" : "← Zurück"}</a>
+      <a href="/article">{lang === "ru" ? "← Назад" : "← Zurück"}</a>
     </main>
   );
 }
