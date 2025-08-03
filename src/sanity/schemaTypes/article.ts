@@ -45,7 +45,7 @@ export const articleType = defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title.ru',
+        source: 'title.de',
         maxLength: 96,
       },
     }),

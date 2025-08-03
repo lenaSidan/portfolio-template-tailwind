@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity'
+import { groq } from "next-sanity";
 
 export const articlesQuery = groq`
   *[_type == "article"] | order(_createdAt desc){
@@ -13,4 +13,4 @@ export const articlesQuery = groq`
       alt
     }
   }
-`
+`;

@@ -1,4 +1,5 @@
 import ArticleList from "@/src/components/ArticlesList";
+import EventsList from "@/src/components/EventsList";
 import Header from "@/src/components/Header";
 import Intro from "@/src/components/Intro";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -24,6 +25,7 @@ export default function Home({ intro }: { intro: IntroData }) {
         <h1>Welcome to the site!</h1>
         <Intro intro={intro} />
         <ArticleList />
+        <EventsList />
       </main>
       {/* <Footer /> */}
     </>
