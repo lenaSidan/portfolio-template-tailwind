@@ -1,9 +1,13 @@
+import FeaturedArticleBlock from "@/src/components/FeaturedArticleBlock";
+import FeaturedEventBlock from "@/src/components/FeaturedEventBlock";
 import Header from "@/src/components/Header";
 import Intro from "@/src/components/Intro";
-import { urlFor } from "@/src/sanity/lib/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { createClient } from "next-sanity";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import Footer from "@/src/components/Footer";
+import styles from "@/styles/Home.module.css"
 
 type IntroData = {
   _id: string;
@@ -17,30 +21,20 @@ type FeaturedEvent = {
   location: { ru: string; de: string };
   summary: { ru: string; de: string };
   image?: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-    };
-    alt?: {
-      ru?: string;
-      de?: string;
-    };
+    asset: { _ref: string; _type: "reference" };
+    alt?: { ru?: string; de?: string };
   };
 };
+
 type FeaturedArticle = {
   title: { ru: string; de: string };
   summary: { ru: string; de: string };
   image?: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-    };
-    alt?: {
-      ru?: string;
-      de?: string;
-    };
+    asset: { _ref: string; _type: "reference" };
+    alt?: { ru?: string; de?: string };
   };
 };
+
 export default function Home({
   intro,
   featuredEvent,
@@ -52,40 +46,17 @@ export default function Home({
 }) {
   const { locale } = useRouter();
   const lang = locale === "de" ? "de" : "ru";
-
+   const { t, i18n } = useTranslation("common");
   return (
     <>
       <Header />
-      <main>
-        <h1>Welcome to the site!</h1>
+      <main  className={styles.mainContent }>
+        <h1>{t("siteTitle")}</h1>
         <Intro intro={intro} />
-        <div>
-          {featuredArticle && (
-            <div>
-              <h2>{featuredArticle.title[lang]}</h2>
-              {featuredArticle.image && (
-                <img src={urlFor(featuredArticle.image).width(1200).url()} alt={featuredArticle.image.alt?.[lang] || ""} />
-              )}
-              <p>{featuredArticle.summary[lang]}</p>
-              <a href="/article">{lang === "ru" ? "Все статьи →" : "Alle Articles →"}</a>
-            </div>
-          )}
-        </div>
-        <div>
-          {featuredEvent && (
-            <div>
-              <h2>{featuredEvent.title[lang]}</h2>
-              {featuredEvent.image && (
-                <img src={urlFor(featuredEvent.image).width(1200).url()} alt={featuredEvent.image.alt?.[lang] || ""} />
-              )}
-              <p>{featuredEvent.date[lang]}</p>
-              <p>{featuredEvent.location[lang]}</p>
-              <p>{featuredEvent.summary[lang]}</p>
-              <a href="/event">{lang === "ru" ? "Все мероприятия →" : "Alle Veranstaltungen →"}</a>
-            </div>
-          )}
-        </div>
+        <FeaturedArticleBlock article={featuredArticle} lang={lang} />
+        <FeaturedEventBlock event={featuredEvent} lang={lang} />
       </main>
+      <Footer />
     </>
   );
 }
@@ -101,15 +72,15 @@ export async function getServerSideProps({ locale }: { locale: string }) {
   const [rawIntro, rawEvent, rawArticle] = await Promise.all([
     client.fetch(`*[_type == "intro"][0]`),
     client.fetch(`*[_type == "event" && featuredOnHome == true][0]`),
-     client.fetch(`*[_type == "article" && featuredOnHome == true][0]`),
+    client.fetch(`*[_type == "article" && featuredOnHome == true][0]`),
   ]);
 
   return {
     props: {
       intro: JSON.parse(JSON.stringify(rawIntro)),
       featuredEvent: JSON.parse(JSON.stringify(rawEvent)),
-      featuredArticle: JSON.parse(JSON.stringify(rawArticle)), 
-      ...(await serverSideTranslations(locale ?? "ru", ["common"])),
+      featuredArticle: JSON.parse(JSON.stringify(rawArticle)),
+      ...(await serverSideTranslations(locale ?? "de", ["common"])),
     },
   };
 }
