@@ -1,0 +1,40 @@
+.themeToggle {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid 999#999;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.light {
+  background-color: white;
+  border-color: black;
+}
+
+.dark {
+  background-color: black;
+  border-color: #999;
+}
+
+.active {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 768px) {
+  .themeToggle {
+    gap: 8px;
+    padding: 0.5rem 0;
+    justify-content: center;
+  }
+
+  .circle {
+    width: 36px;
+    height: 36px;
+  }
+}
