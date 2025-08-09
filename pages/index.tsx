@@ -1,13 +1,13 @@
-import FeaturedArticleBlock from "@/src/components/FeaturedArticleBlock";
-import FeaturedEventBlock from "@/src/components/FeaturedEventBlock";
-import Header from "@/src/components/Header";
-import Intro from "@/src/components/Intro";
+import FeaturedArticleBlock from "@/components/FeaturedArticleBlock";
+import FeaturedEventBlock from "@/components/FeaturedEventBlock";
+import Header from "@/components/Header";
+import Intro from "@/components/Intro";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { createClient } from "next-sanity";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import Footer from "@/src/components/Footer";
-import styles from "@/styles/Home.module.css"
+import Footer from "@/components/Footer";
+import styles from "@/styles/home.module.css"
 
 type IntroData = {
   _id: string;

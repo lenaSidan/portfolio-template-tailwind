@@ -1,8 +1,12 @@
 {
   "siteTitle": "Website Title",
-   "home": "Startseite",
-  "about": "Über uns",
+  "home": "Startseite",
+  "aboutUs": "Über uns",
   "articles": "Artikel",
   "events": "Events",
-  "allRightsReserved": "All rights reserved"
+  "aboutProject": "Über das Projekt",
+  "contact": "Kontakt",
+  "impressum": "Impressum",
+  "privacyPolicy": "Datenschutzerklärung",
+  "allRightsReserved": "Alle Rechte vorbehalten"
 }

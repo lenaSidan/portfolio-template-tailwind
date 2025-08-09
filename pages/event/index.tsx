@@ -1,5 +1,6 @@
-import EventsList from "@/src/components/EventsList";
-import Header from "@/src/components/Header";
+import EventsList from "@/components/EventsList";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -18,6 +19,7 @@ export default function AllEventsPage() {
         <EventsList />
         <a href="/">{locale === "ru" ? "← Назад на главную" : "← Zurück zur Startseite"}</a>
       </main>
+      <Footer />
     </>
   );
 }

@@ -31,14 +31,14 @@
 .eventBlock a {
   display: inline-block;
   margin-top: 0.5rem;
-  color: var(--link-color, #0070f3);
+  color: var(--link-color);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.2s ease;
 }
 
 .eventBlock a:hover {
-  color: var(--link-hover-color, #0051a3);
+  color: var(--link-hover-color);
 }
 @media (max-width: 768px) {
   .eventBlock {
@@ -65,3 +65,4 @@
     margin-top: 1rem;
   }
 }
+

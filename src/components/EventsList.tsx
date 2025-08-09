@@ -1,4 +1,4 @@
-import { client } from "@/src/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
