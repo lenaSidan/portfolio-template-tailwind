@@ -1,5 +1,6 @@
-import ArticlesList from "@/src/components/ArticlesList";
-import Header from "@/src/components/Header";
+import ArticlesList from "@/components/ArticlesList";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -17,6 +18,7 @@ export default function AllArticlesPage() {
         <ArticlesList />
         <a href="/">{locale === "ru" ? "← Назад на главную" : "← Zurück zur Startseite"}</a>
       </main>
+       <Footer />
     </>
   );
 }

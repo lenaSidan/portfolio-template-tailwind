@@ -1,5 +1,5 @@
-import { client } from "@/src/sanity/lib/client";
-import { urlFor } from "@/src/sanity/lib/image";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

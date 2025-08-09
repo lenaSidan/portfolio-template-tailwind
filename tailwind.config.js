@@ -15,6 +15,6 @@ module.exports = {
       },
     },
   },
-  darkMode: "media", // или 'class', если хочешь переключать вручную
+  darkMode: "media",
   plugins: [],
 };

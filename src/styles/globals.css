@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Светлая тема (по умолчанию) */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --accent: #2BB3B1;
+  --accent-hover: #26a09f;
+   --heading-color: #008b8b; /* туркисовый для заголовков */
+  --text-color: #444; 
+  --footer-background: #f5f5f5;
+  --border-color: #008b8b;
+  --link-color: #008b8b; /* туркисовый */
+  --link-hover-color: #006666;
+}
+
+/* тёмная тема */
+html.dark {
+  --background: #2A2A2A;
+  --foreground: #EDEDED;
+  --accent: #30CFCB;
+  --accent-hover: #2bb3b1;
+   --heading-color: #20b2aa; /* чуть светлее туркисовый для тёмной темы */
+  --text-color: #aaa; 
+   --footer-background: #2a2a2a;
+  --border-color: #008b8b;
+  --link-color: #20b2aa; /* светлее туркисовый */
+  --link-hover-color: #1a908f;
+}
+
+/* Общие стили */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}

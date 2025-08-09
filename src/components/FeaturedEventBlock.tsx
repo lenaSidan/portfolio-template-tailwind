@@ -1,4 +1,4 @@
-import { urlFor } from "@/src/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 import styles from "@/styles/featuredEventBlock.module.css";
 
 export default function FeaturedEventBlock({

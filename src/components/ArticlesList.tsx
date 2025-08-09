@@ -1,6 +1,6 @@
-import { client } from "@/src/sanity/lib/client";
-import { urlFor } from "@/src/sanity/lib/image";
-import { articlesQuery } from "@/src/sanity/queries/articles";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { articlesQuery } from "@/sanity/queries/articles";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

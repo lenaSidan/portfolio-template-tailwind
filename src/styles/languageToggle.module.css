@@ -9,7 +9,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 2px solid #999;
+  border: 2px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,13 +20,26 @@
 }
 
 .active {
-  background-color: #111;
+  background-color: var(--accent);
   color: #fff;
-  border-color: #111;
+  border-color: var(--accent);
 }
 
 .inactive {
   background-color: transparent;
-  color: #333;
-  border-color: #ccc;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .toggleWrapper {
+    gap: 8px;
+    padding: 0.5rem 0;
+    justify-content: center;
+  }
+
+  .circle {
+    width: 36px;
+    height: 36px;
+  }
 }

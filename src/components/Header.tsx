@@ -49,7 +49,7 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link href="/about">{t("about")}</Link>
+          <Link href="/about" locale={router.locale}>{t("aboutUs")}</Link>
         </li>
       </ul>
 

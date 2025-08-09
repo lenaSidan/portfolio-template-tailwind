@@ -1,8 +1,12 @@
 {
   "siteTitle": "Название страницы",
   "home": "Главная",
-  "about": "О нас",
+  "aboutUs": "О нас",
   "articles": "Статьи",
   "events": "Мероприятия",
+  "aboutP": "О проекте",
+  "contact": "Контакты",
+  "impressum": "Выходные данные",
+  "privacyPolicy": "Политика конфиденциальности",
   "allRightsReserved": "Все права защищены"
 }
