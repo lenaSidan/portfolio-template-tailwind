@@ -15,9 +15,9 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.links}>
+      <nav className={styles.links} aria-label={t("footerNav") as string}>
         <Link href="/about" locale={router.locale}>
-          {t("about")}
+          {t("project")}
         </Link>
         <Link href="/contact" locale={router.locale}>
           {t("contact")}
@@ -28,9 +28,7 @@ const Footer = () => {
         <Link href="/privacy" locale={router.locale}>
           {t("privacyPolicy")}
         </Link>
-      </div>
-
-  
+      </nav>
 
       <p className={styles.copy}>
         © {new Date().getFullYear()} {t("allRightsReserved")}

@@ -49,9 +49,9 @@ export default function Home({
    const { t, i18n } = useTranslation("common");
   return (
     <>
-      <Header />
+      <Header overHero />
       <main  className={styles.mainContent }>
-        <h1>{t("siteTitle")}</h1>
+        {/* <h1>{t("siteTitle")}</h1> */}
         <Intro intro={intro} />
         <FeaturedArticleBlock article={featuredArticle} lang={lang} />
         <FeaturedEventBlock event={featuredEvent} lang={lang} />

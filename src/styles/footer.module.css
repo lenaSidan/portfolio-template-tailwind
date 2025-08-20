@@ -3,7 +3,7 @@
   text-align: center;
   font-size: 0.9rem;
   color: var(--text-color);
-    background: var(--background);
+  background: var(--footer-background);
   border-top: 1px solid var(--border-color);
 }
 
@@ -16,23 +16,19 @@
 }
 
 .links a {
-  color: var(--link-color);
+  color: var(--link-color);          /* теперь #557A95 */
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 .links a:hover {
-  color: var(--link-hover-color);
+  color: var(--link-hover-color);    /* теперь #7395AE */
 }
 
 .copy {
   margin: 0;
+  color: var(--text-color);
 }
 
-/* Мобильная адаптация */
 @media (max-width: 600px) {
-  .links {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .links { flex-direction: column; gap: 0.5rem; }
 }

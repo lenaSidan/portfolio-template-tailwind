@@ -7,14 +7,14 @@ import { useState } from "react";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 
-const Header = () => {
+type Props = { overHero?: boolean };
+
+const Header = ({ overHero = false }: Props) => {
   const { t, i18n } = useTranslation("common");
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${overHero ? styles.onHero : ""}`}>
       <button
         type="button"
         className={`${styles.menuButton} ${menuOpen ? styles.open : ""}`}
@@ -35,22 +35,10 @@ const Header = () => {
       </button>
 
       <ul className={`${styles.navList} ${menuOpen ? styles.open : ""}`}>
-        <li>
-          <Link href="/">{t("home")}</Link>
-        </li>
-        <li>
-          <Link href="/article" locale={router.locale}>
-            {t("articles")}
-          </Link>
-        </li>
-        <li>
-          <Link href="/event" locale={router.locale}>
-            {t("events")}
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" locale={router.locale}>{t("aboutUs")}</Link>
-        </li>
+        <li><Link href="/">{t("home")}</Link></li>
+        <li><Link href="/article" locale={router.locale}>{t("articles")}</Link></li>
+        <li><Link href="/event"   locale={router.locale}>{t("events")}</Link></li>
+        <li><Link href="/about"   locale={router.locale}>{t("aboutUs")}</Link></li>
       </ul>
 
       <div className={styles.toggleGroup}>

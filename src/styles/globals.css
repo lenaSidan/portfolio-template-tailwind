@@ -2,47 +2,197 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Светлая тема (по умолчанию) */
+/* 🌞 Светлая тема (чистый фон) */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --accent: #2BB3B1;
-  --accent-hover: #26a09f;
-   --heading-color: #008b8b; /* туркисовый для заголовков */
-  --text-color: #444; 
-  --footer-background: #f5f5f5;
-  --border-color: #008b8b;
-  --link-color: #008b8b; /* туркисовый */
-  --link-hover-color: #006666;
+  --foreground: #5d5c61;
+  --heading-color: #557a95;
+  --text-color: #5d5c61;
+
+  --link-color: #557a95;
+  --link-hover-color: #7395ae;
+
+  --footer-background: #b1a296;
+  --border-color: #7395ae;
+
+  --card-bg: #ffffff;
+  --card-border: #7395ae;
+
+  --hero-overlay: rgba(85, 122, 149, 0.12); /* мягкий фильтр над фото */
+  --hero-panel:   rgba(255, 255, 255, 0.78); /* полупрозрачная панель текста */
+
+    /* Переключатели (общие цвета) */
+  --toggle-bg: var(--card-bg);                 /* фон трека */
+  --toggle-fg: var(--link-color);              /* цвет «кноба»/текста */
+  --toggle-border: var(--border-color);        /* обводка */
+  --toggle-hover-bg: rgba(85,122,149,0.08);    /* лёгкий hover */
+  --toggle-active-bg: var(--link-color);       /* активный фон */
+  --toggle-active-fg: #ffffff;                 /* активный текст/кноб */
+
 }
 
-/* тёмная тема */
+/* 🌑 Тёмная тема (контрастная) */
 html.dark {
-  --background: #2A2A2A;
-  --foreground: #EDEDED;
-  --accent: #30CFCB;
-  --accent-hover: #2bb3b1;
-   --heading-color: #20b2aa; /* чуть светлее туркисовый для тёмной темы */
-  --text-color: #aaa; 
-   --footer-background: #2a2a2a;
-  --border-color: #008b8b;
-  --link-color: #20b2aa; /* светлее туркисовый */
-  --link-hover-color: #1a908f;
+  --background: #33546c;
+  --foreground: #ffffff;
+  --heading-color: #ffffff;
+  --text-color: #ffffff;
+
+  --link-color: #b1a296;
+  --link-hover-color: #7395ae;
+
+  --footer-background: #5d5c61;
+  --border-color: #557a95;
+
+  --card-bg: #557a95;
+  --card-border: #7395ae;
+
+  --hero-overlay: rgba(0, 0, 0, 0.35);       /* чуть темнее на тёмной */
+  --hero-panel:   rgba(51, 84, 108, 0.70);   /* панель в цвете фона dark */
+
+    /* Переключатели (общие цвета) */
+  --toggle-bg: rgba(255,255,255,0.06);
+  --toggle-fg: #ffffff;
+  --toggle-border: rgba(255,255,255,0.45);
+  --toggle-hover-bg: rgba(255,255,255,0.12);
+  --toggle-active-bg: #B1A296;   /* тёплый акцент из палитры */
+  --toggle-active-fg: #33546c;   /* читаемый текст/кноб на тёплом фоне */
+
 }
 
-/* Общие стили */
+/* База */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--background);
   color: var(--foreground);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* полноэкранный hero не вызовет прокрутку по X */
 }
 
-a {
-  color: var(--accent);
-  transition: color 0.2s ease;
+/* Предсказуемые размеры боксов */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-a:hover {
-  color: var(--accent-hover);
+/* Медиа ведут себя как блочные и не вылезают */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* Утилиты */
+@layer utilities {
+  .text-on-dark {
+    color: #ffffff;
+  }
+  .text-on-light {
+    color: #5d5c61;
+  }
+
+  .link {
+    color: var(--link-color);
+    transition: color 0.2s ease;
+  }
+  .link:hover {
+    color: var(--link-hover-color);
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .bg-page {
+    background: var(--background);
+  } /* без градиента */
+  .bg-footer {
+    background: var(--footer-background);
+  }
+  .border-theme {
+    border-color: var(--border-color);
+  }
+
+  /* дополнительные «цветные» утилиты, чтобы палитра проявлялась */
+  .title {
+    color: var(--heading-color);
+    font-weight: 700;
+  }
+  .title-accent {
+    position: relative;
+    padding-bottom: 0.35rem;
+  }
+  .title-accent::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 64px;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: 999px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.62rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s,
+      transform 0.1s;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--link-color);
+    color: #fff;
+    border: 1px solid var(--link-color);
+  }
+  .btn-primary:hover {
+    background: var(--link-hover-color);
+    border-color: var(--link-hover-color);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--link-color);
+    border: 1.5px solid var(--link-color);
+  }
+  .btn-outline:hover {
+    color: #fff;
+    background: var(--link-color);
+    border-color: var(--link-color);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 1px solid currentColor;
+  }
+  .badge-blue {
+    color: var(--link-color);
+  }
+  .badge-light {
+    color: var(--link-hover-color);
+  }
+  .badge-warm {
+    color: #b1a296;
+  }
 }
