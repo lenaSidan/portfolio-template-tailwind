@@ -5,11 +5,7 @@
   padding: 0 2rem 2rem;
 }
 
-.mainContent h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin: 0 0 2rem; /* явный верхний margin = 0 */
-}
+
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {

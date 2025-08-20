@@ -1,9 +1,9 @@
 {
   "siteTitle": "Website Title",
   "home": "Startseite",
-  "aboutUs": "Über uns",
-  "articles": "Artikel",
-  "events": "Events",
+  "button1": "Button 1",
+  "button2": "Button 2",
+  "button3": "Button 3",
   "project": "Über das Projekt",
   "contact": "Kontakt",
   "impressum": "Impressum",
