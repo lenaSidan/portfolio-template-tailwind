@@ -1,0 +1,24 @@
+<h1 className="title title-accent">Название страницы</h1>
+
+<p className="text-on-light">Описание раздела…</p>
+
+<div className="space-x-2">
+  <span className="badge badge-warm">Berlin</span>
+  <span className="badge badge-blue">10.09.2025</span>
+</div>
+
+<div className="mt-4 space-x-2">
+  <button className="btn btn-primary">Подробнее</button>
+  <button className="btn btn-outline">Все события</button>
+</div>
+
+<hr className="hr-accent my-8" />
+
+<div className="card card-warm">
+  <h3 className="title">Карточка</h3>
+  <p className="text-on-light">Контент карточки…</p>
+  <div className="space-x-2 mt-2">
+    <span className="tag tag-warm">Бар</span>
+    <span className="tag tag-blue">Музыка</span>
+  </div>
+</div>

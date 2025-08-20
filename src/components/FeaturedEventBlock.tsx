@@ -10,21 +10,46 @@ export default function FeaturedEventBlock({
 }) {
   if (!event) return null;
 
+  const dateText = event.date?.[lang];
+  const dateISO = event.dateISO || event.date?.iso || undefined;
+  const place = event.location?.[lang];
+
   return (
-    <div className={styles.eventBlock}>
-      <h2>{event.title[lang]}</h2>
+    <section className={styles.eventBlock}>
+      <h2 className={styles.title}>{event.title[lang]}</h2>
+      <div className={styles.divider} />
+
       {event.image && (
-        <img
-          src={urlFor(event.image).width(1200).url()}
-          alt={event.image.alt?.[lang] || ""}
-        />
+        <div className={styles.imageWrap}>
+          <img
+            className={styles.image}
+            src={urlFor(event.image).width(1200).url()}
+            alt={event.image?.alt?.[lang] || ""}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       )}
-      <p>{event.date[lang]}</p>
-      <p>{event.location[lang]}</p>
-      <p>{event.summary[lang]}</p>
-      <a href="/event">
-        {lang === "ru" ? "Все мероприятия →" : "Alle Veranstaltungen →"}
+
+      {(dateText || place) && (
+        <div className={styles.meta}>
+          {dateText && (
+            <time className={styles.metaItem} dateTime={dateISO}>
+              {dateText}
+            </time>
+          )}
+          {place && <span className={styles.metaItem}>{place}</span>}
+        </div>
+      )}
+
+      {event.summary?.[lang] && (
+        <p className={styles.summary}>{event.summary[lang]}</p>
+      )}
+
+      <a href="/event" className={styles.cta}>
+        {lang === "ru" ? "Все мероприятия" : "Alle Veranstaltungen"}
+        <span aria-hidden> →</span>
       </a>
-    </div>
+    </section>
   );
-}          
+}
