@@ -39,9 +39,9 @@ html.dark {
   --text-color: #ffffff;
 
   --link-color: #b1a296;
-  --link-hover-color: #7395ae;
+  --link-hover-color: rgba(255, 255, 255, 0.7);
 
-  --footer-background: #5d5c61;
+  --footer-background: #5d5c61; /*b1a296*/
   --border-color: #557a95;
 
   --card-bg: #557a95;
@@ -51,7 +51,7 @@ html.dark {
   --hero-panel:   rgba(51, 84, 108, 0.70);   /* панель в цвете фона dark */
 
     /* Переключатели (общие цвета) */
-  --toggle-bg: rgba(255,255,255,0.06);
+  --toggle-bg: #7395ae;
   --toggle-fg: #ffffff;
   --toggle-border: rgba(255,255,255,0.45);
   --toggle-hover-bg: rgba(255,255,255,0.12);
