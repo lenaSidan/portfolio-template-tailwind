@@ -82,7 +82,7 @@
   background: var(--link-color);
   color: #fff;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   transition:
     background 0.2s ease,

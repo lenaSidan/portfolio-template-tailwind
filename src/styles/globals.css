@@ -19,16 +19,15 @@
   --card-border: #7395ae;
 
   --hero-overlay: rgba(85, 122, 149, 0.12); /* мягкий фильтр над фото */
-  --hero-panel:   rgba(255, 255, 255, 0.78); /* полупрозрачная панель текста */
+  --hero-panel: rgba(255, 255, 255, 0.78); /* полупрозрачная панель текста */
 
-    /* Переключатели (общие цвета) */
-  --toggle-bg: var(--card-bg);                 /* фон трека */
-  --toggle-fg: var(--link-color);              /* цвет «кноба»/текста */
-  --toggle-border: var(--border-color);        /* обводка */
-  --toggle-hover-bg: rgba(85,122,149,0.08);    /* лёгкий hover */
-  --toggle-active-bg: var(--link-color);       /* активный фон */
-  --toggle-active-fg: #ffffff;                 /* активный текст/кноб */
-
+  /* Переключатели (общие цвета) */
+  --toggle-bg: var(--card-bg); /* фон трека */
+  --toggle-fg: var(--link-color); /* цвет «кноба»/текста */
+  --toggle-border: var(--border-color); /* обводка */
+  --toggle-hover-bg: rgba(85, 122, 149, 0.08); /* лёгкий hover */
+  --toggle-active-bg: var(--link-color); /* активный фон */
+  --toggle-active-fg: #ffffff; /* активный текст/кноб */
 }
 
 /* 🌑 Тёмная тема (контрастная) */
@@ -47,17 +46,16 @@ html.dark {
   --card-bg: #557a95;
   --card-border: #7395ae;
 
-  --hero-overlay: rgba(0, 0, 0, 0.35);       /* чуть темнее на тёмной */
-  --hero-panel:   rgba(51, 84, 108, 0.70);   /* панель в цвете фона dark */
+  --hero-overlay: rgba(0, 0, 0, 0.35); /* чуть темнее на тёмной */
+  --hero-panel: rgba(51, 84, 108, 0.7); /* панель в цвете фона dark */
 
-    /* Переключатели (общие цвета) */
+  /* Переключатели (общие цвета) */
   --toggle-bg: #7395ae;
   --toggle-fg: #ffffff;
-  --toggle-border: rgba(255,255,255,0.45);
-  --toggle-hover-bg: rgba(255,255,255,0.12);
-  --toggle-active-bg: #B1A296;   /* тёплый акцент из палитры */
-  --toggle-active-fg: #33546c;   /* читаемый текст/кноб на тёплом фоне */
-
+  --toggle-border: rgba(255, 255, 255, 0.45);
+  --toggle-hover-bg: rgba(255, 255, 255, 0.12);
+  --toggle-active-bg: #b1a296; /* тёплый акцент из палитры */
+  --toggle-active-fg: #33546c; /* читаемый текст/кноб на тёплом фоне */
 }
 
 /* База */
@@ -69,19 +67,30 @@ body {
     background 0.3s ease,
     color 0.3s ease;
 }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* полноэкранный hero не вызовет прокрутку по X */
 }
 
 /* Предсказуемые размеры боксов */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* Медиа ведут себя как блочные и не вылезают */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
@@ -159,13 +168,25 @@ img, picture, video, canvas, svg {
     transform: translateY(1px);
   }
   .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
     background: var(--link-color);
     color: #fff;
-    border: 1px solid var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1;
+    transition:
+      background 0.2s ease,
+      transform 0.1s ease;
   }
   .btn-primary:hover {
     background: var(--link-hover-color);
-    border-color: var(--link-hover-color);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
   }
   .btn-outline {
     background: transparent;

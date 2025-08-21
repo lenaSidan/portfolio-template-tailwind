@@ -72,13 +72,14 @@ html.dark .shade {
 .title {
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 4.5rem;
   line-height: 1.15;
   margin: 0 0 30px 0;
 
 }
 .text {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: rgba(255, 255, 255, 0.92);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
   margin: 0;
