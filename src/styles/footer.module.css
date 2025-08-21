@@ -1,8 +1,9 @@
 .footer {
+
   padding: 2rem 1rem;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--text-color);
+
   background: var(--footer-background);
   border-top: 1px solid var(--border-color);
 }
@@ -16,17 +17,17 @@
 }
 
 .links a {
-  color: var(--link-color);          /* теперь #557A95 */
+  color: var(--footer-links-color);      
   text-decoration: none;
   transition: color 0.2s ease;
 }
 .links a:hover {
-  color: var(--link-hover-color);    /* теперь #7395AE */
+  color: var(--link-hover-color);   
 }
 
 .copy {
   margin: 0;
-  color: var(--text-color);
+  color: #ffffff;
 }
 
 @media (max-width: 600px) {

@@ -8,11 +8,17 @@
   --foreground: #5d5c61;
   --heading-color: #557a95;
   --text-color: #5d5c61;
+  --text-color2: #ffffff;
 
   --link-color: #557a95;
+  --link-color2: #ffffff;
+  --link-color3: #557a95;
   --link-hover-color: #7395ae;
 
-  --footer-background: #b1a296;
+  --button: #33546c; 
+
+  --footer-background: #33546c;
+  --footer-links-color: #95b2c7;
   --border-color: #7395ae;
 
   --card-bg: #ffffff;
@@ -28,6 +34,9 @@
   --toggle-hover-bg: rgba(85, 122, 149, 0.08); /* лёгкий hover */
   --toggle-active-bg: var(--link-color); /* активный фон */
   --toggle-active-fg: #ffffff; /* активный текст/кноб */
+
+  --event-band-bg: #33546c;
+  --event-chip-bg: #ffffff; /* фон чипов на подложке */
 }
 
 /* 🌑 Тёмная тема (контрастная) */
@@ -36,11 +45,16 @@ html.dark {
   --foreground: #ffffff;
   --heading-color: #ffffff;
   --text-color: #ffffff;
+  --text-color2: #5d5c61;
 
   --link-color: #b1a296;
+  --link-color2: #7395ae;
+  --link-color3: #ffffff;
   --link-hover-color: rgba(255, 255, 255, 0.7);
 
-  --footer-background: #5d5c61; /*b1a296*/
+  --button: #ffffff;
+  --footer-background: #5d5c61;
+  --footer-links-color: #d3d0d0;
   --border-color: #557a95;
 
   --card-bg: #557a95;
@@ -56,6 +70,9 @@ html.dark {
   --toggle-hover-bg: rgba(255, 255, 255, 0.12);
   --toggle-active-bg: #b1a296; /* тёплый акцент из палитры */
   --toggle-active-fg: #33546c; /* читаемый текст/кноб на тёплом фоне */
+
+  --event-band-bg: #fff9f4;
+  --event-chip-bg: #d7c6b8;
 }
 
 /* База */

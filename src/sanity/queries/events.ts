@@ -1,18 +1,18 @@
 import { groq } from "next-sanity";
 
-export const eventsQuery = groq`
- *[_type == "event"] | order(_createdAt desc){
+export const eventsListQuery = groq`
+  *[_type == "event"] 
+  | order(coalesce(start, _createdAt) desc){
     _id,
-    title,
-    date,
-    location,
+    title, 
     summary,
-    slug,
-    image {
-      asset ->{
-       url
-      },
-      alt
-    }
+    start, end, timezone,
+    venue,             // { name{ru,de}, city{ru,de} | string, ... }
+    image{ asset->{_id, url}, alt },
+    "slug": slug.current,
+
+    // legacy-поля (если остались старые документы)
+    date,
+    location
   }
 `;

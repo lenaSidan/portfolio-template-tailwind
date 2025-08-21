@@ -1,13 +1,13 @@
 import FeaturedArticleBlock from "@/components/FeaturedArticleBlock";
 import FeaturedEventBlock from "@/components/FeaturedEventBlock";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Intro from "@/components/Intro";
+import styles from "@/styles/home.module.css";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { createClient } from "next-sanity";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import Footer from "@/components/Footer";
-import styles from "@/styles/home.module.css"
 
 type IntroData = {
   _id: string;
@@ -15,26 +15,32 @@ type IntroData = {
   text: { ru: string; de: string };
 };
 
+type ML = { ru?: string; de?: string };
+
 type FeaturedEvent = {
-  title: { ru: string; de: string };
-  date: { ru: string; de: string };
-  location: { ru: string; de: string };
-  summary: { ru: string; de: string };
+  _id: string;
+  title: ML;
+  summary?: ML;
+  start?: string;
+  end?: string;
+  timezone?: string;
+  venue?: { name?: ML; city?: string | ML };
+  cta?: { href?: string; label?: ML };
   image?: {
-    asset: { _ref: string; _type: "reference" };
-    alt?: { ru?: string; de?: string };
+    asset?: { _ref?: string; _type?: "reference"; url?: string; _id?: string };
+    alt?: ML;
   };
+  slug?: string; 
 };
 
 type FeaturedArticle = {
-  title: { ru: string; de: string };
-  summary: { ru: string; de: string };
+  title: ML;
+  summary: ML;
   image?: {
     asset: { _ref: string; _type: "reference" };
-    alt?: { ru?: string; de?: string };
+    alt?: ML;
   };
 };
-
 export default function Home({
   intro,
   featuredEvent,
@@ -46,11 +52,11 @@ export default function Home({
 }) {
   const { locale } = useRouter();
   const lang = locale === "de" ? "de" : "ru";
-   const { t, i18n } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   return (
     <>
       <Header overHero />
-      <main  className={styles.mainContent }>
+      <main className={styles.mainContent}>
         {/* <h1>{t("siteTitle")}</h1> */}
         <Intro intro={intro} />
         <FeaturedArticleBlock article={featuredArticle} lang={lang} />

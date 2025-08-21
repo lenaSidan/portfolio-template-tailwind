@@ -1,0 +1,23 @@
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  margin-top: 50px;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+  color: var(--heading-color);
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.back {
+  margin-top: 2rem;
+}
+.back a {
+  color: var(--link-color);
+}
+.back a:hover {
+  color: var(--link-hover-color);
+}
