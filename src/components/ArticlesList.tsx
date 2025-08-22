@@ -1,68 +1,83 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { articlesQuery } from "@/sanity/queries/articles";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+
+import styles from "@/styles/articleList.module.css";
+
+type ML = { ru?: string; de?: string };
 
 type Article = {
   _id: string;
-  title: { ru: string; de: string };
-  summary: { ru: string; de: string };
+  title: ML;
+  summary: ML;
   slug: { current: string };
   image?: {
-    asset?: {
-      _ref: string;
-    };
+    asset?: { _ref?: string };
     alt?: string;
   };
 };
 
 export default function ArticleList() {
   const [articles, setArticles] = useState<Article[]>([]);
-  const router = useRouter();
-  const { locale } = router;
+  const { locale } = useRouter();
+  const lang = (locale === "de" ? "de" : "ru") as "ru" | "de";
 
   useEffect(() => {
-    client.fetch(articlesQuery).then((data) => setArticles(data));
+    client.fetch(articlesQuery).then((data) => setArticles(Array.isArray(data) ? data : []));
   }, []);
 
   return (
-    <section>
-      <h2>{locale === "ru" ? "Статьи" : "Artikel"}</h2>
-      {articles.map((article) => {
-        const slug = article.slug?.current;
-        return (
-          <div key={article._id} style={{ marginBottom: "2rem" }}>
-            {article.image && (
-              <img
-                src={urlFor(article.image).width(800).url()}
-                alt={article.image.alt || ""}
-                style={{ maxWidth: "100%", height: "auto" }}
-              />
-            )}
-            <h3>{article.title[locale as "ru" | "de"]}</h3>
-            <p>{article.summary[locale as "ru" | "de"]}</p>
-            {slug && (
-              <Link
-                href={`/${locale}/article/${slug}`}
-                locale={locale}
-                style={{
-                  display: "inline-block",
-                  padding: "0.5rem 1rem",
-                  background: "#ccc",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                  color: "#000",
-                }}
-              >
-                {locale === "ru" ? "Подробнее" : "Mehr lesen"}
-              </Link>
-            )}
-          </div>
-        );
-      })}
+    <section className={styles.section}>
+
+      <div className={styles.grid}>
+        {articles.map((article) => {
+          const slug = article.slug?.current;
+          const title = article.title?.[lang] ?? article.title?.ru ?? article.title?.de ?? "";
+          const summary = article.summary?.[lang] ?? article.summary?.ru ?? article.summary?.de ?? "";
+
+          const imgUrl = article.image?.asset
+            ? urlFor(article.image).width(800).height(520).fit("crop").url()
+            : "";
+
+          return (
+            <article key={article._id} className={styles.card}>
+              {imgUrl && (
+                <div className={styles.imageWrap}>
+                  <img
+                    className={styles.image}
+                    src={imgUrl}
+                    alt={article.image?.alt || ""}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+
+              <div className={styles.body}>
+                <h3 className={styles.title}>{title}</h3>
+                {summary && <p className={styles.summary}>{summary}</p>}
+
+                {slug && (
+                  <div className={styles.actions}>
+                    <Link
+                      href={`/article/${slug}`}
+                      locale={locale}
+                      className="btn btn-primary"
+                      aria-label={lang === "ru" ? `Подробнее: ${title}` : `Mehr lesen: ${title}`}
+                    >
+                      {lang === "ru" ? "Подробнее" : "Mehr lesen"} →
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }

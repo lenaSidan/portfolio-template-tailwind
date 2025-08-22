@@ -2,80 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌞 Светлая тема (чистый фон) */
+/* ===========================
+   Токены темы (CSS-переменные)
+   =========================== */
+
+/* 🌞 Светлая тема */
 :root {
+  /* Базовые цвета */
   --background: #ffffff;
   --foreground: #5d5c61;
   --heading-color: #557a95;
+  --heading-color2: #2f475b;
+
   --text-color: #5d5c61;
   --text-color2: #ffffff;
 
+  /* Ссылки/акценты */
   --link-color: #557a95;
   --link-color2: #ffffff;
   --link-color3: #557a95;
-  --link-hover-color: #7395ae;
+  --link-hover-color: #5d5c61;
 
-  --button: #33546c; 
-
+  /* Кнопки/футер/границы */
+  --button: #33546c;
   --footer-background: #33546c;
   --footer-links-color: #95b2c7;
   --border-color: #7395ae;
 
+  /* Поверхности */
   --card-bg: #ffffff;
   --card-border: #7395ae;
 
-  --hero-overlay: rgba(85, 122, 149, 0.12); /* мягкий фильтр над фото */
-  --hero-panel: rgba(255, 255, 255, 0.78); /* полупрозрачная панель текста */
+  /* Подложка фото в hero */
+  --hero-overlay: rgba(85, 122, 149, 0.12);
+  --hero-panel: rgba(255, 255, 255, 0.78);
 
-  /* Переключатели (общие цвета) */
-  --toggle-bg: var(--card-bg); /* фон трека */
-  --toggle-fg: var(--link-color); /* цвет «кноба»/текста */
-  --toggle-border: var(--border-color); /* обводка */
-  --toggle-hover-bg: rgba(85, 122, 149, 0.08); /* лёгкий hover */
-  --toggle-active-bg: var(--link-color); /* активный фон */
-  --toggle-active-fg: #ffffff; /* активный текст/кноб */
+  /* Переключатели */
+  --toggle-bg: var(--card-bg);
+  --toggle-fg: var(--link-color);
+  --toggle-border: var(--border-color);
+  --toggle-hover-bg: rgba(85, 122, 149, 0.08);
+  --toggle-active-bg: var(--link-color);
+  --toggle-active-fg: #ffffff;
 
-  --event-band-bg: #33546c;
-  --event-chip-bg: #ffffff; /* фон чипов на подложке */
+  /* Чипы/ленты (унифицировано) */
+  --chip-bg: rgba(85, 122, 149, 0.08);
+  --chip-border: rgba(85, 122, 149, 0.25);
+  --event-chip-bg: #95b2c7;
+
+  /* Лента/бэнд для блока события (если используешь .band) */
+  --band-bg: #eaf0f5; /* лёгкая холодная подложка, еле заметная */
 }
 
-/* 🌑 Тёмная тема (контрастная) */
+/* 🌑 Тёмная тема — мягкий контраст + два уровня поверхности */
 html.dark {
-  --background: #33546c;
+  /* База/текст */
+  --background: #2f475b; /* темнее фона, чтобы «поднять» контент */
   --foreground: #ffffff;
   --heading-color: #ffffff;
+  --heading-color2: #7ea1bc;
+  
   --text-color: #ffffff;
   --text-color2: #5d5c61;
 
-  --link-color: #b1a296;
+  /* Ссылки/акценты */
+  --link-color: #b9c8d6; /* мягкий холодный акцент */
   --link-color2: #7395ae;
   --link-color3: #ffffff;
-  --link-hover-color: rgba(255, 255, 255, 0.7);
+  --link-hover-color: #d4e0e8; /* светлее при hover */
 
+  /* Кнопки/футер/границы */
   --button: #ffffff;
   --footer-background: #5d5c61;
   --footer-links-color: #d3d0d0;
-  --border-color: #557a95;
+  --border-color: #7ea1bc; /* системная граница (общая) */
 
-  --card-bg: #557a95;
-  --card-border: #7395ae;
+  /* Поверхности (2 уровня) */
+  --card-bg: #3b5871; /* светлее фона страницы → карточки читаемее */
+  --card-border: rgba(255, 255, 255, 0.22);
 
-  --hero-overlay: rgba(0, 0, 0, 0.35); /* чуть темнее на тёмной */
-  --hero-panel: rgba(51, 84, 108, 0.7); /* панель в цвете фона dark */
+  /* Hero */
+  --hero-overlay: rgba(0, 0, 0, 0.35);
+  --hero-panel: rgba(51, 84, 108, 0.7);
 
-  /* Переключатели (общие цвета) */
+  /* Переключатели */
   --toggle-bg: #7395ae;
   --toggle-fg: #ffffff;
   --toggle-border: rgba(255, 255, 255, 0.45);
   --toggle-hover-bg: rgba(255, 255, 255, 0.12);
-  --toggle-active-bg: #b1a296; /* тёплый акцент из палитры */
-  --toggle-active-fg: #33546c; /* читаемый текст/кноб на тёплом фоне */
+  --toggle-active-bg: #b1a296; /* тёплый акцент */
+  --toggle-active-fg: #33546c;
 
-  --event-band-bg: #fff9f4;
-  --event-chip-bg: #d7c6b8;
+  /* Чипы/ленты */
+  --chip-bg: rgba(255, 255, 255, 0.06);
+  --chip-border: rgba(255, 255, 255, 0.18);
+   --event-chip-bg: #b1a296;
+
+  /* Бэнд для блока события (если используется .band) */
+  --band-bg: rgba(255, 255, 255, 0.03);
 }
 
-/* База */
+/* =========
+   База
+   ========= */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--background);
@@ -84,14 +113,14 @@ body {
     background 0.3s ease,
     color 0.3s ease;
 }
+
 html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* полноэкранный hero не вызовет прокрутку по X */
+  overflow-x: hidden;
 }
 
-/* Предсказуемые размеры боксов */
 *,
 *::before,
 *::after {
@@ -102,7 +131,7 @@ h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Медиа ведут себя как блочные и не вылезают */
+/* Медиа ведут себя адекватно */
 img,
 picture,
 video,
@@ -112,7 +141,10 @@ svg {
   max-width: 100%;
   height: auto;
 }
-/* Утилиты */
+
+/* =========
+   Утилиты
+   ========= */
 @layer utilities {
   .text-on-dark {
     color: #ffffff;
@@ -138,7 +170,7 @@ svg {
 
   .bg-page {
     background: var(--background);
-  } /* без градиента */
+  }
   .bg-footer {
     background: var(--footer-background);
   }
@@ -146,7 +178,6 @@ svg {
     border-color: var(--border-color);
   }
 
-  /* дополнительные «цветные» утилиты, чтобы палитра проявлялась */
   .title {
     color: var(--heading-color);
     font-weight: 700;
@@ -166,6 +197,8 @@ svg {
     background: var(--border-color);
     border-radius: 999px;
   }
+
+  /* Кнопки (универсальные) */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -175,6 +208,8 @@ svg {
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
     transition:
       background 0.2s,
       color 0.2s,
@@ -184,27 +219,19 @@ svg {
   .btn:active {
     transform: translateY(1px);
   }
+
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     padding: 14px 22px;
     border-radius: 999px;
     background: var(--link-color);
     color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    line-height: 1;
-    transition:
-      background 0.2s ease,
-      transform 0.1s ease;
+    border-color: var(--link-color);
   }
   .btn-primary:hover {
     background: var(--link-hover-color);
+    border-color: var(--link-hover-color);
   }
-  .btn-primary:active {
-    transform: translateY(1px);
-  }
+
   .btn-outline {
     background: transparent;
     color: var(--link-color);
@@ -215,6 +242,7 @@ svg {
     background: var(--link-color);
     border-color: var(--link-color);
   }
+
   .badge {
     display: inline-flex;
     align-items: center;
@@ -232,5 +260,25 @@ svg {
   }
   .badge-warm {
     color: #b1a296;
+  }
+
+  /* Чипы для даты/места (единый стиль по сайту) */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Лента-подложка для блоков (например, «Избранное событие») */
+  .band {
+    background: var(--band-bg);
+    border-radius: 16px;
   }
 }

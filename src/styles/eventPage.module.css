@@ -4,13 +4,16 @@
   padding: 2rem 1rem;
 }
 
+/* заголовок страницы события */
 .title {
-  margin: 0 0 30px 0;
-  color: var(--heading-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 0 30px 0;
+  color: var(--heading-color2);
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
+/* строка с чипами (дата/место) */
 .meta {
   list-style: none;
   padding: 0;
@@ -20,16 +23,21 @@
   gap: 0.5rem;
 }
 
+/* ЧИПЫ: перевела на токены из globals.css */
 .chip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.35rem 0.6rem;
-  border: 1px solid var(--border-color);
   border-radius: 999px;
-  font-weight: 600;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
   color: var(--text-color);
-  background: transparent;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
+/* картинка */
 .imageWrap {
   margin: 1rem 0;
 }
@@ -41,6 +49,7 @@
   border: 1px solid var(--card-border);
 }
 
+/* краткое интро */
 .summary {
   margin: 0.5rem 0 1rem 0;
   color: var(--text-color);
@@ -48,23 +57,22 @@
   font-size: 1.05rem;
 }
 
+/* основной контент PortableText */
 .content {
   line-height: 1.7;
 }
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-}
+
+/* блок с кнопками */
 .actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
+/* универсальная база кнопки */
 .btn {
   display: inline-flex;
   align-items: center;
-  margin-top: 60px;
   gap: 0.5rem;
   padding: 0.62rem 1rem;
   border-radius: 999px;
@@ -72,7 +80,9 @@
   text-decoration: none;
   border: 1px solid transparent;
   text-transform: uppercase;
+  margin-top: 60px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+
   transition:
     transform 0.08s ease,
     background 0.15s ease,
@@ -83,27 +93,28 @@
   transform: translateY(1px);
 }
 
+/* «основная» (бывш. btnLight) — теперь без захардкоженного #7395ae */
 .btnLight {
-  background: #7395ae;
+  background: var(--link-color);
   color: #ffffff;
   border-color: var(--link-color);
 }
 .btnLight:hover {
   background: var(--link-hover-color);
-
-  color: var(--foreground);
+  border-color: var(--link-hover-color);
+  color: #ffffff;
 }
 
-
+/* «прозрачная» (бывш. btnGhost) */
 .btnGhost {
   background: transparent;
-  color: var(--button);
-  border-color: var(--link-color);
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
 }
 .btnGhost:hover {
-  color: var(--foreground);
   background: var(--link-hover-color);
-  border-color: var(--link-color);
+  border-color: var(--link-hover-color);
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
