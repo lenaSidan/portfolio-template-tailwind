@@ -103,8 +103,6 @@ export default function EventsList() {
 
   return (
     <section className={styles.wrap}>
-      <h2 className={styles.heading}>{lang === "ru" ? "События" : "Veranstaltungen"}</h2>
-
       <ul className={styles.list}>
         {items.map((event) => {
           const title = event.title?.[lang] ?? event.title?.ru ?? event.title?.de ?? "";

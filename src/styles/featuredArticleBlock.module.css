@@ -73,36 +73,52 @@
 .actions {
   margin-top: 6px;
 }
-.btnPrimary {
+.btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
+  gap: 0.5rem;
+  padding: 0.62rem 1rem;
   border-radius: 999px;
-  background: var(--link-color);
-  color: #fff;
-  text-decoration: none;
   font-weight: 600;
-  line-height: 1;
-   text-transform: uppercase;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: none;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+
   transition:
-    background 0.2s ease,
-    transform 0.1s ease;
+    transform 0.08s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
-.btnPrimary:hover {
-  background: var(--link-hover-color);
-}
-.btnPrimary:active {
+.btn:active {
   transform: translateY(1px);
 }
-html.dark .btnPrimary {
-  color: #2a2a2a;
+
+
+.btnLight {
+  background: var(--link-color);
+  color: #ffffff;
+  border-color: var(--link-color);
 }
-html.dark .btnPrimary:hover {
+.btnLight:hover {
+  background: var(--link-hover-color);
+  border-color: var(--link-hover-color);
   color: #ffffff;
 }
 
+/* «прозрачная» (бывш. btnGhost) */
+.btnGhost {
+  background: transparent;
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
+}
+.btnGhost:hover {
+  background: var(--link-hover-color);
+  border-color: var(--link-hover-color);
+  color: #ffffff;
+}
 @media (max-width: 1200px) {
   .grid {
     gap: 32px;

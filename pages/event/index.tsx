@@ -9,33 +9,42 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import styles from "@/styles/eventsIndex.module.css";
 
+// pages/event/index.tsx (AllEventsPage)
+
 export default function AllEventsPage() {
   const { locale } = useRouter();
   const lang = locale === "de" ? "de" : "ru";
 
   return (
     <>
-      <Header />
       <Head>
         <title>{lang === "ru" ? "Мероприятия" : "Veranstaltungen"}</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>{lang === "ru" ? "Все мероприятия" : "Alle Veranstaltungen"}</h1>
+      {/* оборачиваем в контейнер-колонку */}
+      <div className={styles.page}>
+        <Header />
 
-        <EventsList />
+        <main className={styles.main}>
+          <h1 className={styles.title}>
+            {lang === "ru" ? "Все мероприятия" : "Alle Veranstaltungen"}
+          </h1>
 
-        <p className={styles.back}>
-          <Link href="/" locale={locale}>
-            {lang === "ru" ? "← Назад на главную" : "← Zurück zur Startseite"}
-          </Link>
-        </p>
-      </main>
+          <EventsList />
 
-      <Footer />
+          <p className={styles.back}>
+            <Link href="/" locale={locale}>
+              {lang === "ru" ? "← Назад на главную" : "← Zurück zur Startseite"}
+            </Link>
+          </p>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 }
+
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {

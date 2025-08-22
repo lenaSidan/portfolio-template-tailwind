@@ -47,7 +47,7 @@ export default function FeaturedArticleBlock({ article, lang }: { article: any; 
           <p className={styles.summary}>{article.summary[lang]}</p>
 
           <div className={styles.actions}>
-            <Link href="/article" className={styles.btnPrimary}>
+            <Link href="/article" className={`${styles.btn} ${styles.btnLight}`}>
               {lang === "ru" ? "Все статьи" : "Alle Artikel"}
             </Link>
           </div>

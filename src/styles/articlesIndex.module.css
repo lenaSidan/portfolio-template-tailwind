@@ -1,16 +1,8 @@
-.page {
-  min-height: 100svh; 
-  display: flex;
-  flex-direction: column;
-}
-
-/* main тянется, чтобы Footer оказался внизу */
 .main {
-  flex: 1 0 auto;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  margin-top: 50px;
+  margin-top: 50px; /* небольшой отступ под хедер */
 }
 
 .title {
@@ -19,11 +11,13 @@
   font-weight: 700;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2rem;
+  text-align: center;
 }
 
+/* блок «назад» */
 .back {
   margin-top: 2rem;
-
+  text-align: center;
 }
 
 .back a {
@@ -37,4 +31,9 @@
 .back a:hover {
   color: var(--link-hover-color);
   border-color: var(--link-hover-color);
+}
+
+/* адаптивность */
+@media (max-width: 768px) {
+  .title { font-size: 1.6rem; }
 }
