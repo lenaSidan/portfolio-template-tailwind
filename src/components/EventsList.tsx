@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import { eventsListQuery } from "@/sanity/queries/events";
+import styles from "@/styles/eventsList.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "@/styles/eventsList.module.css";
+import { useEffect, useState } from "react";
 
 type ML = { ru?: string; de?: string };
 type Venue = { name?: ML; city?: ML | string };
@@ -16,10 +17,13 @@ type Item = {
   end?: string;
   timezone?: string;
   venue?: Venue;
-  image?: { asset?: { url?: string } };
-  slug?: string;         // slug.current из GROQ мы кладём в alias "slug"
-  date?: ML;             // legacy текстовое поле
-  location?: ML;         // legacy
+  image?: { 
+    asset?: { url?: string };
+    alt?: string;
+   };
+  slug?: string; // slug.current из GROQ мы кладём в alias "slug"
+  date?: ML; // legacy текстовое поле
+  location?: ML; // legacy
 };
 
 export default function EventsList() {
@@ -94,9 +98,7 @@ export default function EventsList() {
     return (
       <section className={styles.wrap}>
         <h2 className={styles.heading}>{lang === "ru" ? "События" : "Veranstaltungen"}</h2>
-        <p className={styles.empty}>
-          {lang === "ru" ? "Пока нет событий." : "Zurzeit keine Veranstaltungen."}
-        </p>
+        <p className={styles.empty}>{lang === "ru" ? "Пока нет событий." : "Zurzeit keine Veranstaltungen."}</p>
       </section>
     );
   }
@@ -115,9 +117,24 @@ export default function EventsList() {
           const summary = event.summary?.[lang] ?? "";
 
           const detailsHref = event.slug ? `/event/${event.slug}` : undefined;
-
+          
+          const imgUrl = event.image?.asset ? urlFor(event.image).width(800).height(520).fit("crop").url() : "";
+          
           return (
             <li key={event._id} className={styles.card}>
+              <div className={styles.imageTextBlock}>
+              {imgUrl && (
+                <div className={styles.imageWrap}>
+                  <img
+                    className={styles.image}
+                    src={imgUrl}
+                    alt={event.image?.alt || ""}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+
               <div className={styles.cardBody}>
                 <h3 className={styles.title}>{title}</h3>
 
@@ -138,6 +155,7 @@ export default function EventsList() {
                     {lang === "ru" ? "Подробнее" : "Mehr lesen"} →
                   </Link>
                 )}
+              </div>
               </div>
             </li>
           );

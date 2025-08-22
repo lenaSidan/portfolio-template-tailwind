@@ -53,7 +53,7 @@
 
 /* Заголовок */
 .title {
-  color: var(--foreground);
+  color: var(--background);
   font-weight: 700;
   font-size: 1.8rem;
   line-height: 1.25;
@@ -76,17 +76,17 @@
   gap: 0.35rem;
   padding: 0.35rem 0.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--event-chip-bg);
-  opacity: 0.8;
-  color: #0f2b3d;
+  border: 1px solid var(--link-color4);
+  background: var(--event-chip-bg2);
+ 
+  color: #ffffff;
   font-weight: 700;
   font-size: 0.92rem;
 }
 
 /* Текст */
 .summary {
-  color: var(--text-color);
+  color: var(--text-color2);
   opacity: 0.92;
   font-size: 1.05rem;
   line-height: 1.75;
@@ -126,9 +126,9 @@
 
 
 .btnLight {
-  background: var(--link-color);
+  background: var(--link-color4);
   color: #ffffff;
-  border-color: var(--link-color);
+  border-color: var(--link-color4);
 }
 .btnLight:hover {
   background: var(--link-hover-color);
@@ -139,8 +139,8 @@
 /* «прозрачная» (бывш. btnGhost) */
 .btnGhost {
   background: transparent;
-  color: var(--link-color);
-  border: 1px solid var(--link-color);
+  color: var(--link-color4);
+  border: 1px solid var(--link-color4);
 }
 .btnGhost:hover {
   background: var(--link-hover-color);
