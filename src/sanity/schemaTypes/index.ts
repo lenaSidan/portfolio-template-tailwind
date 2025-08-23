@@ -8,7 +8,8 @@ import { categoryType } from "./categoryType";
 import { eventType } from "./events";
 import { intro } from "./intro";
 import { postType } from "./postType";
+import { impressum } from "./impressum";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, intro, articleType, eventType, aboutProject],
+  types: [blockContentType, categoryType, postType, authorType, intro, articleType, eventType, aboutProject, impressum],
 };
