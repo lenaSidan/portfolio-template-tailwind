@@ -1,5 +1,5 @@
 .page {
-  min-height: 100svh; 
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
 }
@@ -8,22 +8,20 @@
 .main {
   flex: 1 0 auto;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 2rem 1rem;
-  margin-top: 50px;
 }
 
 .title {
   margin: 0 0 1rem 0;
   color: var(--text-color);
   font-weight: 700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2rem;
 }
 
 .back {
   margin-top: 2rem;
-
 }
 
 .back a {
@@ -31,7 +29,9 @@
   text-decoration: none;
   font-weight: 600;
   border-bottom: 1px solid transparent;
-  transition: color .2s ease, border-color .2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .back a:hover {
@@ -39,7 +39,6 @@
   border-color: var(--link-hover-color);
 }
 @media (max-width: 768px) {
-
   .title {
     font-size: 1.8rem;
   }

@@ -1,10 +1,8 @@
 .content {
   display: flex;
   justify-content: center;
-
 }
 
-/* Сам «карточный» блок с текстом */
 .inner {
   width: 100%;
   max-width: 880px;
@@ -15,7 +13,6 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); /* деликатная глубина */
 }
 
-/* Заголовок */
 .title {
   color: var(--heading-color);
   font-weight: 800;
@@ -24,49 +21,58 @@
   margin: 0 0 10px 0;
 }
 
-/* Основной текст */
 .text {
   color: var(--text-color);
   font-size: 1.06rem;
   line-height: 1.75;
   margin: 4px 0 0;
-  max-width: 70ch; /* комфортная ширина строки */
+  max-width: 70ch;
 }
 
-/* Верстка внутри PortableText/параграфов */
-.text p { margin: 0 0 1rem; }
-.text ul, .text ol { margin: 0.5rem 0 1rem 1.25rem; }
-.text li { margin: 0.25rem 0; }
+.text p {
+  margin: 0 0 1rem;
+}
+.text ul,
+.text ol {
+  margin: 0.5rem 0 1rem 1.25rem;
+}
+.text li {
+  margin: 0.25rem 0;
+}
 
-/* Ссылки в тексте */
 .text a {
   color: var(--link-color);
   text-decoration: none;
   border-bottom: 1px solid var(--border-color);
-  transition: color .15s ease, border-color .15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 .text a:hover {
   color: var(--link-hover-color);
   border-color: var(--link-hover-color);
 }
 
-/* Ряд с кнопками */
 .actions {
   display: flex;
   gap: 12px;
   margin-top: 18px;
 }
 
-/* Чуть мягче капс/шрифт у глобальной .btn, если захочешь */
 .actions :global(.btn) {
   text-transform: none;
 }
 
-/* Адаптивность */
 @media (min-width: 900px) {
-  .inner { padding: 40px 48px; }
+  .inner {
+    padding: 40px 48px;
+  }
 }
 @media (max-width: 480px) {
-  .inner { padding: 20px 16px; }
-  .title { font-size: 1.35rem; }
+  .inner {
+    padding: 20px 16px;
+  }
+  .title {
+    font-size: 1.35rem;
+  }
 }
