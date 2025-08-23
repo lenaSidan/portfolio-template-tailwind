@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <nav className={styles.links} aria-label={t("footerNav") as string}>
-        <Link href="/about" locale={router.locale}>
+        <Link href="/about-project" locale={router.locale}>
           {t("project")}
         </Link>
         <Link href="/contact" locale={router.locale}>
