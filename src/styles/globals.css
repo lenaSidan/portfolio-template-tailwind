@@ -22,7 +22,8 @@
   --link-color2: #ffffff;
   --link-color3: #557a95;
   --link-color4: #b9c8d6;
-  --link-hover-color: #5d5c61;
+  --link-hover-color: #b1a296;
+  --footer-link-hover-color: #b1a296;
 
   /* Кнопки/футер/границы */
   --button: #33546c;
@@ -52,7 +53,7 @@
   --event-chip-bg: #95b2c7;
   --event-chip-bg2: #b1a296;
 
-   --event-band-bg: #33546c;
+  --event-band-bg: #33546c;
 
   /* Лента/бэнд для блока события (если используешь .band) */
   --band-bg: #eaf0f5; /* лёгкая холодная подложка, еле заметная */
@@ -65,8 +66,7 @@ html.dark {
   --foreground: #ffffff;
   --heading-color: #ffffff;
   --heading-color2: #7ea1bc;
- 
-  
+
   --text-color: #ffffff;
   --text-color2: #5d5c61;
 
@@ -74,13 +74,14 @@ html.dark {
   --link-color: #b9c8d6; /* мягкий холодный акцент */
   --link-color2: #7395ae;
   --link-color3: #ffffff;
-   --link-color4: #557a95;
+  --link-color4: #557a95;
   --link-hover-color: #d4e0e8; /* светлее при hover */
+  --footer-link-hover-color: #ffffff;
 
   /* Кнопки/футер/границы */
   --button: #ffffff;
-  --footer-background: #5d5c61;
-  --footer-links-color: #d3d0d0;
+  --footer-background: #b1a296;
+  --footer-links-color: #5d5c61;
   --border-color: #7ea1bc; /* системная граница (общая) */
 
   /* Поверхности (2 уровня) */
@@ -103,10 +104,10 @@ html.dark {
   /* Чипы/ленты */
   --chip-bg: rgba(255, 255, 255, 0.06);
   --chip-border: rgba(255, 255, 255, 0.18);
-   --event-chip-bg: #b1a296;
-   --event-chip-bg2: #33546c;
+  --event-chip-bg: #b1a296;
+  --event-chip-bg2: #33546c;
 
-   --event-band-bg: #ffffff;
+  --event-band-bg: #ffffff;
 
   /* Бэнд для блока события (если используется .band) */
   --band-bg: rgba(255, 255, 255, 0.03);
@@ -236,6 +237,10 @@ svg {
     background: var(--link-color);
     color: #fff;
     border-color: var(--link-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   .btn-primary:hover {
     background: var(--link-hover-color);
