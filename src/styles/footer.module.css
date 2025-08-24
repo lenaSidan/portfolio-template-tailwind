@@ -32,7 +32,17 @@
   margin: 20px 0 0 0;
   color: #ffffff;
 }
+/* активный пункт в футере */
+.links a[aria-current="page"] {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+}
 
+/* опционально: видимый фокус */
+.links a:focus-visible {
+  outline: 2px solid var(--footer-links-color);
+  outline-offset: 3px;
+}
 @media (max-width: 600px) {
   .links {
     flex-direction: column;
