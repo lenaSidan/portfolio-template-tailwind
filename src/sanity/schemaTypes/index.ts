@@ -10,7 +10,8 @@ import { intro } from "./intro";
 import { postType } from "./postType";
 import { impressum } from "./impressum";
 import { privacyPolicy } from "./privacy-policy";
+import { contactPage } from "./contactPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, intro, articleType, eventType, aboutProject, impressum, privacyPolicy],
+  types: [blockContentType, categoryType, postType, authorType, intro, articleType, eventType, aboutProject, impressum, privacyPolicy, contactPage],
 };
