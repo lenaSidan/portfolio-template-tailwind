@@ -8,7 +8,7 @@ type ML = { ru?: string; de?: string };
 
 type EventVenue = {
   name?: ML;
-  city?: string | ML; // может быть строкой или мультиязычным объектом
+  city?: string | ML; 
   address?: ML;
   mapUrl?: string;
   website?: string;

@@ -10,17 +10,28 @@ import ThemeToggle from "./ThemeToggle";
 type Props = { overHero?: boolean };
 
 const Header = ({ overHero = false }: Props) => {
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [solid, setSolid] = useState(false);   // ← добавили
+  const [solid, setSolid] = useState(false);
+
+  // --- helper: активный путь (игнорируем локаль, хвост /, query, hash)
+  const stripLocale = (p: string) => p.replace(/^\/(ru|de)(?=\/|$)/, "");
+  const normalize = (p: string) =>
+    stripLocale(p.split(/[?#]/)[0]).replace(/\/+$/, "") || "/";
+
+  const current = normalize(router.asPath);
+  const isActive = (href: string) => {
+    const target = normalize(href);
+    // активным считаем сам раздел и все его "внутренние" страницы
+    return current === target || current.startsWith(target + "/");
+  };
 
   useEffect(() => {
     if (!overHero) return;
     const hero = document.querySelector<HTMLElement>("[data-hero]");
     if (!hero) return;
 
-    // Когда геро перестаёт быть видимым — делаем хедер “solid”
     const io = new IntersectionObserver(
       (entries) => {
         const e = entries[0];
@@ -28,10 +39,12 @@ const Header = ({ overHero = false }: Props) => {
       },
       { threshold: [0, 0.15, 1], rootMargin: "-10px 0px 0px 0px" }
     );
-
     io.observe(hero);
     return () => io.disconnect();
   }, [overHero]);
+
+  // закрывать мобильное меню при клике по ссылке
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav
@@ -51,10 +64,46 @@ const Header = ({ overHero = false }: Props) => {
       </button>
 
       <ul className={`${styles.navList} ${menuOpen ? styles.open : ""}`}>
-        <li><Link href="/">{t("home")}</Link></li>
-        <li><Link href="/article" locale={router.locale}>{t("button1")}</Link></li>
-        <li><Link href="/event"   locale={router.locale}>{t("button2")}</Link></li>
-        <li><Link href="/about"   locale={router.locale}>{t("button3")}</Link></li>
+        <li>
+          <Link
+            href="/"
+            locale={router.locale}
+            aria-current={isActive("/") ? "page" : undefined}
+            onClick={closeMenu}
+          >
+            {t("home")}
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/article"
+            locale={router.locale}
+            aria-current={isActive("/article") ? "page" : undefined}
+            onClick={closeMenu}
+          >
+            {t("button1")}
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/event"
+            locale={router.locale}
+            aria-current={isActive("/event") ? "page" : undefined}
+            onClick={closeMenu}
+          >
+            {t("button2")}
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/contact"
+            locale={router.locale}
+            aria-current={isActive("/contact") ? "page" : undefined}
+            onClick={closeMenu}
+          >
+            {t("button3")}
+          </Link>
+        </li>
       </ul>
 
       <div className={styles.toggleGroup}>
@@ -64,7 +113,7 @@ const Header = ({ overHero = false }: Props) => {
 
       <div
         className={`${styles.menuOverlay} ${menuOpen ? styles.open : ""}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={closeMenu}
       />
     </nav>
   );
