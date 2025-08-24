@@ -25,7 +25,7 @@ const Footer = () => {
         <Link href="/impressum" locale={router.locale}>
           {t("impressum")}
         </Link>
-        <Link href="/privacy" locale={router.locale}>
+        <Link href="/privacy-policy" locale={router.locale}>
           {t("privacyPolicy")}
         </Link>
       </nav>

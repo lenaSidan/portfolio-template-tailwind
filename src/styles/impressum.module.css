@@ -5,12 +5,12 @@
 
 .inner {
   width: 100%;
-  max-width: 880px;
+  max-width: 1200px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 24px clamp(16px, 3vw, 40px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); /* деликатная глубина */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 .title {
   color: var(--heading-color);
