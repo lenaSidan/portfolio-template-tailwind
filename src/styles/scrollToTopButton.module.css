@@ -1,0 +1,61 @@
+.button {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 1000;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--link-color);
+  color: #fff;
+  cursor: pointer;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.12s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:hover {
+  background: var(--link-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--link-hover-color);
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  line-height: 0;
+}
+
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* чуть ближе к краю на телефонах */
+@media (max-width: 768px) {
+  .button {
+    right: 14px;
+    bottom: 18px;
+  }
+}
