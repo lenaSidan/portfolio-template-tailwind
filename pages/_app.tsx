@@ -10,6 +10,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ScrollToTopButton />
     </>
   );
-}
+ }
 
 export default appWithTranslation(MyApp);
